@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kevin.dao.HouseDAO">
+<resultMap type="com.kevin.model.House" id="House" />
+            
+    <insert id="insertHouse" parameterType="House">
+    
+      INSERT INTO TB_HOURSEINFO(ID,HOURCENO,HOURCEAREA,HOURCEADDR,HOURCERDATE)
+         VALUES(UUID(),#{HOURCENO},#{HOURCEAREA},#{HOURCEADDR},#{HOURCERDATE})                     
+    </insert>
+    
+    <update id="updateHashByNum" parameterType="map">  
+      UPDATE TB_HOURSEINFO SET HASHNUM=#{HASHNUM} WHERE HOURCENO=#{HOURCENO}
+    </update>
+          
+</mapper>
