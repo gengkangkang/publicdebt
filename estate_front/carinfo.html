@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>estate</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/html5shiv/html5shiv.min.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <!-- MENU -->
+<div class="row">
+    <div class="col-xs-12">
+       <h1>车辆信息登记</h1>
+    </div>
+</div>
+
+<form class="form-horizontal" id="transferform" name="transferform">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">车牌号</label>
+    <div class="col-sm-10">
+        <div class="input-group">
+            <input class="form-control" id="CARNO" name="CARNO" placeholder="车牌号">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">品牌</label>
+    <div class="col-sm-10">
+        <div class="input-group">
+            <input class="form-control" id="CARBRAND" name="CARBRAND" placeholder="品牌">
+			 <div class="input-group-addon">
+            <span class="glyphicon glyphicon-bold" aria-hidden="true"></span>
+			</div>
+        </div>
+    </div>
+  </div>
+
+    <div class="form-group">
+        <label  class="col-sm-2 control-label">价格</label>
+        <div class="col-sm-10">
+            <div class="input-group">
+                <input  class="form-control" id="CARPRICE" name="CARPRICE" placeholder="价格">
+                <div class="input-group-addon">
+                <span class="glyphicon glyphicon-yen" aria-hidden="true"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">购买日期</label>
+        <div class="col-sm-10">
+            <div class="input-group">
+            <input type="date"  class="form-control" id="BUYDATE" name="BUYDATE" placeholder="YYYY-MM-DD">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">备注</label>
+        <div class="col-sm-10">
+            <div class="input-group">
+                <input type="text"  class="form-control" id="REMARK" name="REMARK" placeholder="备注">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default" id="transferdatabutton" onclick="add2transfer();">保存</button>
+    </div>
+  </div>
+</form>
+
+</div>
+
+<div id="alertModal"  class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">消息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" id="alertmessage">
+                    <!-- alert -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script  type="text/javascript">
+    //  $(function() {
+    // 	 $('#transferdatabutton').on('click', function () {
+    // 	     var $btn = $(this).button('保存中...');
+    // 	     // business logic...
+    // 	   })
+    // 	 });
+    function alertcft(message){
+        $("#alertmessage").html(message);
+        $('#alertModal').modal('show');
+    };
+
+    $(document).ready(function(){
+
+    });
+
+    function add2transfer(){
+        $('#transferdatabutton').button('loading');
+//alert($('#transferform').serialize());
+//alert($("input[name='itemInvID']:checked").val());
+//return;
+        if($("input[name='CARNO']").val()){
+        }else{
+            alertcft("车牌号");
+            $('#transferdatabutton').button('reset');
+            return;
+        }
+
+        alertcft();
+        $.ajax({
+            url: '/transferCart/transferapply',
+            contentType: "application/json; charset=utf-8",
+            type: "GET",
+            data: $('#transferform').serialize(),//JSON.stringify($d),{"itemInvID":1,"transferCount":1},//
+            dataType: "json",
+            success: function (data) {
+                if(data.IsSuccess){
+                    alertcft(data.Message);
+                }else{
+                    alertcft(data.Message);
+                }
+            },
+            error: function (msg) {
+                alertcft("保存失败");
+            },
+            complete: function(data) {
+                $('#transferdatabutton').button('reset');
+            }
+        });
+    }
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>estate</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/html5shiv/html5shiv.min.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <!-- MENU -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="ownerList.html">智慧社区</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">业主信息</a></li>
+                <li class="active"><a href="houseList.html">房产信息</a></li>
+                <li><a href="#">车辆信息</a></li>
+                <li><a href="#">租赁信息</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--<div class="row">-->
+        <!--<div class="col-xs-12">-->
+            <!--<h1>房产信息列表</h1>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table">
+                <caption>房产列表</caption>
+                <thead>
+                <tr>
+                    <th>房屋编号</th>
+                    <th>房屋面积</th>
+                    <th>房屋地址</th>
+                    <th>房屋登记日期</th>
+                    <th>状态</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody id="houseList">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="alertModal"  class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">消息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" id="alertmessage">
+                    <!-- alert -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script  type="text/javascript">
+    //  $(function() {
+    // 	 $('#transferdatabutton').on('click', function () {
+    // 	     var $btn = $(this).button('保存中...');
+    // 	     // business logic...
+    // 	   })
+    // 	 });
+    var stateMap = {
+        "0":"已住",
+        "1":"空闲",
+        "2":"预租",
+        "3":"已租"
+    }
+    function alertcft(message){
+        $("#alertmessage").html(message);
+        $('#alertModal').modal('show');
+    };
+
+    $(document).ready(function(){
+        //查询房屋列表
+        var houseList = [
+            {
+                id:"1",
+                HOURCENO:"1",
+                HOURCEAREA:"100平",
+                HOURCEADDR:"回龙观新龙城901",
+                HOURCERDATE:"2015年3月2日",
+                STATE:"0",
+                REMARK:"这个房子很好"
+            },
+            {
+                id:"1",
+                HOURCENO:"1",
+                HOURCEAREA:"100平",
+                HOURCEADDR:"回龙观新龙城901",
+                HOURCERDATE:"2015年3月2日",
+                STATE:"0",
+                REMARK:"这个房子很好"
+            },
+            {
+                id:"2",
+                HOURCENO:"2",
+                HOURCEAREA:"100平",
+                HOURCEADDR:"回龙观新龙城902",
+                HOURCERDATE:"2015年3月2日",
+                STATE:"0",
+                REMARK:"这个房子很好"
+            }
+        ];
+        var tbody =  $("#houseList");
+        tbody.children().remove();
+        $.each(houseList,function(index,house){
+            var tr = $('<tr>'+
+            '<td><a href="houseinfo.html?houseId="'+house.id+'>'+house.HOURCENO+'</a></td>'+
+            '<td>'+house.HOURCEAREA+'</td>'+
+            '<td>'+house.HOURCEADDR+'</td>'+
+            '<td>'+house.HOURCERDATE+'</td>'+
+            '<td>'+stateMap[house.STATE]+'</td>'+
+            '<td>'+house.REMARK+'</td>'+
+            '</tr>');
+            tbody.append(tr);
+        });
+        /** init **/
+        try{
+            window.zulu.setTitle("<?php echo $model->name; ?>");
+        }catch(e){
+// 			alertcft("设置title失败");
+        }
+    });
+
+</script>
+
+</body>
+</html>
