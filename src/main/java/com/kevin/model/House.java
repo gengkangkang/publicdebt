@@ -13,7 +13,7 @@ public class House {
 	private String HOURCEAREA;
 	private String HOURCEADDR;
 	private String HOURCERDATE;
-	private String REMARK;
+	private String HASHNUM;
 	public String getID() {
 		return ID;
 	}
@@ -44,11 +44,12 @@ public class House {
 	public void setHOURCERDATE(String hOURCERDATE) {
 		HOURCERDATE = hOURCERDATE;
 	}
-	public String getREMARK() {
-		return REMARK;
+
+	public String getHASHNUM() {
+		return HASHNUM;
 	}
-	public void setREMARK(String rEMARK) {
-		REMARK = rEMARK;
+	public void setHASHNUM(String hASHNUM) {
+		HASHNUM = hASHNUM;
 	}
 
 }

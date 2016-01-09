@@ -15,7 +15,7 @@ public class Car {
 	private String CARBRAND;
 	private String CARPRICE;
 	private String BUYDATE;
-	private String REMARK;
+	private String HASHNUM;
 
 	public String getID() {
 		return ID;
@@ -57,11 +57,13 @@ public class Car {
 		BUYDATE = bUYDATE;
 	}
 
-	public String getREMARK() {
-		return REMARK;
+	public String getHASHNUM() {
+		return HASHNUM;
 	}
 
-	public void setREMARK(String rEMARK) {
-		REMARK = rEMARK;
+	public void setHASHNUM(String hASHNUM) {
+		HASHNUM = hASHNUM;
 	}
+
+
 }
