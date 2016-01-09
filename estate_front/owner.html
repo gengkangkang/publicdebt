@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>estate</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/html5shiv/html5shiv.min.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="ownerList.html">物业联盟</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">业主信息</a></li>
+                        <li><a href="#">房产信息</a></li>
+                        <li><a href="#">车辆信息</a></li>
+                        <li><a href="#">租赁信息</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h3>业主详情</h3>
+        </div>
+        <a type="button" class="btn btn-primary float-right" href="javascript:void(0);" id="modify">修改</a>
+    </div>
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6 text-center">
+            <div class="row">
+                <div class="col-xs-4">姓名：</div>
+                <div class="col-xs-8" id="name"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">证件类型：</div>
+                <div class="col-xs-8" id="idType"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">证件号码：</div>
+                <div class="col-xs-8" id="idNumber"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">房产信息：</div>
+                <div class="col-xs-8" id="houseInfo"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">车辆信息：</div>
+                <div class="col-xs-8" id="carInfo"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">缴费情况：</div>
+                <div class="col-xs-8" id="recharge"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">综合评分：</div>
+                <div class="col-xs-8" id="level"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">备注：</div>
+                <div class="col-xs-8" id="remark"></div>
+            </div>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+</div>
+<script src="js/jquery/jquery.validate.min.js"></script>
+<script src="js/html/owner.js"></script>
+</body>
+</html>
