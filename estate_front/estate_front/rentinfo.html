@@ -12,33 +12,36 @@
 </head>
 <body>
 <div class="container">
-    <!-- MENU -->
-	<nav class="navbar navbar-default" role="navigation">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="ownerList.html">智慧社区</a>
                 </div>
                 <div>
                     <ul class="nav navbar-nav">
-                        <li ><a href="ownerList.html">业主信息</a></li>
-                        <li class="active"><a href="houseList.html">房产信息</a></li>
+                        <li class="active"><a href="ownerList.html">业主信息</a></li>
+                        <li><a href="houseList.html">房产信息</a></li>
                         <li><a href="carinfo.html">车辆信息</a></li>
                         <li><a href="rentinfo.html">租赁信息</a></li>
                     </ul>
                 </div>
             </nav>
-			
+        </div>
+    </div>
+    <!-- MENU -->
 <div class="row">
     <div class="col-xs-12">
-       <h1>房产信息登记</h1>
+       <h1>房屋租赁信息登记</h1>
     </div>
 </div>
 
 <form class="form-horizontal" id="transferform" name="transferform">
   <div class="form-group">
-    <label class="col-sm-2 control-label">房产编号</label>
+    <label class="col-sm-2 control-label">业主ID</label>
     <div class="col-sm-10">
         <div class="input-group">
-            <input class="form-control" id="HOURCENO" name="HOURCENO" placeholder="房产编号">
+            <input class="form-control" id="USERID" name="USERID" placeholder="业主ID">
             <div class="input-group-addon">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             </div>
@@ -46,56 +49,41 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">房屋面积</label>
+    <label class="col-sm-2 control-label">租赁房屋信息</label>
     <div class="col-sm-10">
         <div class="input-group">
-            <input class="form-control" id="HOURCEAREA" name="HOURCEAREA" placeholder="房屋面积">
-            <div class="input-group-addon">m&sup2;</div>
+            <input class="form-control" id="HOURSEID" name="HOURSEID" placeholder="租赁房屋信息">
+            <div class="input-group-addon">
+			<span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
+			</div>
         </div>
     </div>
   </div>
 
     <div class="form-group">
-        <label  class="col-sm-2 control-label">房屋地址</label>
+        <label  class="col-sm-2 control-label">租赁价格</label>
         <div class="col-sm-10">
             <div class="input-group">
-                <input  class="form-control" id="HOURCEADDR" name="HOURCEADDR" placeholder="房屋地址">
+                <input  class="form-control" id="LEASEHOURSE" name="LEASEHOURSE" placeholder="租赁价格">
                 <div class="input-group-addon">
-                <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-yen" aria-hidden="true"></span>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-sm-2 control-label">房屋登记日期</label>
+        <label class="col-sm-2 control-label">到期日期</label>
         <div class="col-sm-10">
             <div class="input-group">
-            <input type="date"  class="form-control" id="HOURCERDATE" name="HOURCERDATE" placeholder="YYYY-MM-DD">
+            <input type="date"  class="form-control" id="BUYDATE" name="BUYDATE" placeholder="YYYY-MM-DD">
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">房屋状态</label>
-        <div class="btn-group">
-            <button type="button" class="btn btn-default" id="stateDis">已住</button>
-            <input type="hidden" value="0" id="state"/>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu" id="stateUl">
-                <li><a href="javascript:void(0);" data-value="0">已住</a></li>
-                <li><a href="javascript:void(0);" data-value="1">闲置</a></li>
-                <li><a href="javascript:void(0);" data-value="2">待租</a></li>
-                <li><a href="javascript:void(0);" data-value="3">预租</a></li>
-                <li><a href="javascript:void(0);" data-value="4">已租</a></li>
-            </ul>
-        </div>
-    </div>
+
     <div class="form-group">
         <label class="col-sm-2 control-label">备注</label>
         <div class="col-sm-10">
@@ -139,48 +127,6 @@
 </div><!-- /.modal -->
 
 <script  type="text/javascript">
-    var stateMap = {
-        "0":"已住",
-        "1":"闲置",
-        "2":"待租",
-        "3":"预租",
-        "4":"已租"
-    }
-    function getUrlParam () {
-        var param = {};
-        var href = location.href;
-        var paramStr = href.substr(href.indexOf("?") + 1);
-        if (paramStr) {
-            var paramArray = paramStr.split("&");
-            $(paramArray).each(function (index, keyValueStr) {
-                var field = keyValueStr.split("=");
-                param[field[0]] = field[1];
-            });
-            return param;
-        } else {
-            return null;
-        }
-    }
-    var param = getUrlParam();
-    if(param.houseId){
-        //这里查询数据
-        var house = {
-            id:"2",
-            HOURCENO:"2",
-            HOURCEAREA:"100平",
-            HOURCEADDR:"回龙观新龙城902",
-            HOURCERDATE:"2015年3月2日",
-            STATE:"0",
-            REMARK:"这个房子很好"
-        }
-        $("#HOURCENO").val(house.HOURCENO);
-        $("#HOURCEAREA").val(house.HOURCEAREA);
-        $("#HOURCEADDR").val(house.HOURCEADDR);
-        $("#HOURCERDATE").val(house.HOURCERDATE);
-        $("#state").val(house.STATE);
-        $("#stateDis").html(stateMap[house.STATE]);
-        $("#REMARK").val(house.REMARK);
-    }
     //  $(function() {
     // 	 $('#transferdatabutton').on('click', function () {
     // 	     var $btn = $(this).button('保存中...');
@@ -193,12 +139,7 @@
     };
 
     $(document).ready(function(){
-        /** init **/
-        try{
-            window.zulu.setTitle("<?php echo $model->name; ?>");
-        }catch(e){
-// 			alertcft("设置title失败");
-        }
+
     });
 
     function add2transfer(){
@@ -206,17 +147,18 @@
 //alert($('#transferform').serialize());
 //alert($("input[name='itemInvID']:checked").val());
 //return;
-        if($("input[name='HOURCENO']").val()){
+        if($("input[name='USERID']").val()){
         }else{
-            alertcft("请填写房屋编号");
+            alertcft("车牌号");
             $('#transferdatabutton').button('reset');
             return;
         }
 
         alertcft();
         $.ajax({
-            url: '/api/blockchain/saveHouseInfo.do',
-            type: "post",
+            url: '/transferCart/transferapply',
+            contentType: "application/json; charset=utf-8",
+            type: "GET",
             data: $('#transferform').serialize(),//JSON.stringify($d),{"itemInvID":1,"transferCount":1},//
             dataType: "json",
             success: function (data) {
@@ -234,17 +176,9 @@
             }
         });
     }
-    $("#HOURCEAREA").on('input',function(e){
-        if($.isNumeric($('#HOURCEAREA').val())){
 
-        } else{
-            alertcft("请填数字");
-        }
-        if(parseInt($('#HOURCEAREA').val()) < 1){
-            $('#HOURCEAREA').val(1);
-            alertcft("数量不能小于1");
-        }
-    });
+
+
 
 </script>
 
