@@ -14,5 +14,10 @@
     <update id="updateHashByNum" parameterType="map">  
       UPDATE TB_HOURSEINFO SET HASHNUM=#{HASHNUM} WHERE HOURCENO=#{HOURCENO}
     </update>
+    
+    <select id="queryHouseInfoByID" resultType="House" parameterType="map">	
+     select ID,HOURCENO,HOURCEAREA,HOURCEADDR,HOURCERDATE,HASHNUM from TB_HOURSEINFO WHERE HOURCENO=#{HOURCENO}
+     
+	</select>
           
 </mapper>

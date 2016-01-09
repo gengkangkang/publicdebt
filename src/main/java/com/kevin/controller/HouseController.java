@@ -1,6 +1,8 @@
 package com.kevin.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.kevin.blockchain.SendToFactom;
 import com.kevin.model.House;
+import com.kevin.model.User;
 import com.kevin.service.HouseService;
 
 @Controller
@@ -74,5 +77,33 @@ public class HouseController {
 		}
 		return rmap;
 
+    }
+	
+	@RequestMapping(value="queryHouseInfoByID",method=RequestMethod.GET)
+	@ResponseBody
+    public Map<String,Object> queryHouseInfoByID(@RequestParam("HOURCENO") String HOURCENO){
+		System.out.println("========================================come in queryHouseInfoByID===========");
+		
+		String code=null;
+		String msg=null;
+		List<House> list=new ArrayList<House>();
+		Map<String,Object> rmap=new HashMap<String,Object>();
+	
+		try{
+			Map<String,String> map=new HashMap<String,String>();
+			map.put("HOURCENO", HOURCENO);
+			list=houseService.queryHouseInfoByID(map);
+		
+		}catch(Exception e){
+			code="9999";
+			msg="系统异常";
+			e.printStackTrace();
+		}finally{
+		rmap.put("code", code);
+		rmap.put("msg", msg);
+		rmap.put("data", list);
+		}
+		return rmap;
+		
     }
 }

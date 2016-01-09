@@ -9,5 +9,13 @@
          INSERT INTO TB_CARINFO(ID,CARNO,CARBRAND,CARPRICE,BUYDATE)
             VALUES(UUID(),#{CARNO},#{CARBRAND},#{CARPRICE},#{BUYDATE})             
     </insert>
+    
+    <update id="updateCarHash" parameterType="map">  
+      UPDATE TB_CARINFO SET HASHNUM=#{HASHNUM} WHERE CARNO=#{CARNO}    
+    </update>
+    
+    <select id="queryCarInfoByID" resultType="Car" parameterType="map">	
+    select ID,CARNO,CARBRAND,CARPRICE,BUYDATE,HASHNUM from TB_CARINFO WHERE CARNO=#{CARNO}     
+	</select>
           
 </mapper>

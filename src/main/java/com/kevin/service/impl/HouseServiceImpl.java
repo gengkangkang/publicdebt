@@ -1,5 +1,6 @@
 package com.kevin.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,12 @@ public class HouseServiceImpl implements HouseService {
 	public int updateHashByNum(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		return houseDAO.updateHashByNum(map);
+	}
+
+	@Override
+	public List<House> queryHouseInfoByID(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return houseDAO.queryHouseInfoByID(map);
 	}
 
 }

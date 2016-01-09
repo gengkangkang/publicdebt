@@ -1,5 +1,8 @@
 package com.kevin.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,18 @@ public class CarServiceImpl implements CarService {
 	public int insertCar(Car car) {
 		// TODO Auto-generated method stub
 		return carDAO.insertCar(car);
+	}
+
+	@Override
+	public int updateCarHash(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return carDAO.updateCarHash(map);
+	}
+
+	@Override
+	public List<Car> queryCarInfoByID(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return carDAO.queryCarInfoByID(map);
 	}
 
 }
