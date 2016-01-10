@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kevin.dao.CarDAO">
+<resultMap type="com.kevin.model.Car" id="Car" />
+            
+    <insert id="insertCar" parameterType="Car">
+         INSERT INTO TB_CARINFO(ID,CARNO,CARBRAND,CARPRICE,BUYDATE)
+            VALUES(UUID(),#{CARNO},#{CARBRAND},#{CARPRICE},#{BUYDATE})             
+    </insert>
+    
+    <update id="updateCarHash" parameterType="map">  
+      UPDATE TB_CARINFO SET HASHNUM=#{HASHNUM} WHERE CARNO=#{CARNO}    
+    </update>
+    
+    <select id="queryCarInfoByID" resultType="Car" parameterType="map">	
+    select ID,CARNO,CARBRAND,CARPRICE,BUYDATE,HASHNUM from TB_CARINFO WHERE CARNO=#{CARNO}     
+	</select>
+          
+</mapper>

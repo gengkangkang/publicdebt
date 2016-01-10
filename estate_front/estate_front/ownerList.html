@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>estate</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/html5shiv/html5shiv.min.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="ownerList.html">智慧社区</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="ownerList.html">业主信息</a></li>
+                        <li><a href="houseList.html">房产信息</a></li>
+                        <li><a href="carinfo.html">车辆信息</a></li>
+                        <li><a href="rentinfo.html">租赁信息</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn btn-primary float-right" href="ownerInput.html">添加</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table">
+                <caption>业主列表</caption>
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>证件类型</th>
+                    <th>证件号</th>
+                    <th>物业缴费</th>
+                    <th>信用评级</th>
+                    <th>hashNum</th>
+                </tr>
+                </thead>
+                <tbody id="ownerList">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--<div class="row">-->
+        <!--<div class="col-xs-12">-->
+            <!--<ul class="pagination">-->
+                <!--<li><a href="#">&laquo;</a></li>-->
+                <!--<li class="active"><a href="#">1</a></li>-->
+                <!--<li class="disabled"><a href="#">2</a></li>-->
+                <!--<li><a href="#">3</a></li>-->
+                <!--<li><a href="#">4</a></li>-->
+                <!--<li><a href="#">5</a></li>-->
+                <!--<li><a href="#">&raquo;</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+<script src="js/jquery/jquery.validate.min.js"></script>
+<script src="js/html/ownerList.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kevin.dao.UserDAO"> 
+           
+    <insert id="insertUser" parameterType="User">         
+         INSERT INTO TB_OWNERINFO(ID,NAME,IDTYPE,IDNUMBER,HOURSEID,CARID,PROPERTYPAYINFO,LEVEL) 
+             VALUES(UUID(),#{NAME},#{IDTYPE},#{IDNUMBER},#{HOURSEID},#{CARID},#{PROPERTYPAYINFO},'65')            
+     </insert>
+     
+    <update id="updateUserHash" parameterType="map">  
+      UPDATE TB_OWNERINFO SET HASHNUM=#{HASHNUM} WHERE IDNUMBER=#{IDNUMBER}
+  
+    </update>
+    
+     <select id="queryUserInfo" resultType="User">	
+     SELECT ID,NAME,IDTYPE,IDNUMBER,HOURSEID,CARID,PROPERTYPAYINFO,`LEVEL`,HASHNUM FROM TB_OWNERINFO
+	</select>
+	
+	<select id="queryUserInfoByID" resultType="User" parameterType="map">	
+     SELECT ID,NAME,IDTYPE,IDNUMBER,HOURSEID,CARID,PROPERTYPAYINFO,`LEVEL`,HASHNUM FROM TB_OWNERINFO WHERE IDNUMBER=#{IDNUMBER}
+	</select>
+          
+</mapper>

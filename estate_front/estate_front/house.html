@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>estate</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/html5shiv/html5shiv.min.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <script src="js/jquery/jquery.cookie.js"></script>
+</head>
+<body>
+<div class="container">
+    <!-- MENU -->
+	<nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="ownerList.html">智慧社区</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li ><a href="ownerList.html">业主信息</a></li>
+                        <li class="active"><a href="houseList.html">房产信息</a></li>
+                        <li><a href="carinfo.html">车辆信息</a></li>
+                        <li><a href="rentinfo.html">租赁信息</a></li>
+                    </ul>
+                </div>
+            </nav>
+			
+<div class="row">
+    <div class="col-xs-12 text-center">
+       <h3>房产信息</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button id="funcBtn" class="btn btn-primary float-right"></button>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6 text-center">
+            <div class="row">
+                <div class="col-xs-4">房屋编号：</div>
+                <div class="col-xs-8" id="HOURCENO"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">房屋面积：</div>
+                <div class="col-xs-8" id="HOURCEAREA"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">房屋地址：</div>
+                <div class="col-xs-8" id="HOURCEADDR"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">房屋登记日期：</div>
+                <div class="col-xs-8" id="HOURCERDATE"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">状态：</div>
+                <div class="col-xs-8" id="STATE"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">备注：</div>
+                <div class="col-xs-8" id="REMARK"></div>
+            </div>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+
+</div>
+
+<div id="alertModal"  class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">消息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" id="alertmessage">
+                    <!-- alert -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script  type="text/javascript">
+    var type = $.cookie("type");
+
+    var stateMap = {
+        "0":"已住",
+        "1":"闲置",
+        "2":"待租",
+        "3":"预租",
+        "4":"已租"
+    }
+    function getUrlParam () {
+        var param = {};
+        var href = location.href;
+        var paramStr = href.substr(href.indexOf("?") + 1);
+        if (paramStr) {
+            var paramArray = paramStr.split("&");
+            $(paramArray).each(function (index, keyValueStr) {
+                var field = keyValueStr.split("=");
+                param[field[0]] = field[1];
+            });
+            return param;
+        } else {
+            return null;
+        }
+    }
+    var param = getUrlParam();
+    $(document).ready(function(){
+        //这里读取房产信息
+        $.ajax({
+            url:"/api/blockchain/queryHouseInfoByID.do",
+            type:"get",
+            data:{
+                HOURCENO:param.houseId
+            },
+            dataType:"json",
+            success:function(data){
+                console.log("data=="+JSON.stringify(data));
+                if(data.data[0]){
+                    var house = data.data[0];
+                    $("#HOURCENO").html(house.hourceno);
+                    $("#HOURCEAREA").html(house.hourcearea);
+                    $("#HOURCEADDR").html(house.hourceaddr);
+                    $("#HOURCERDATE").html(house.hourcerdate);
+                    $("#STATE").html(stateMap[house.STATE]);
+                    $("#REMARK").html(house.hashnum);
+
+                    if(type=="admin"){
+                        $("#funcBtn").html("修改");
+                        $("#funcBtn").click(function(){
+                            location.href = "houseInfo.html";
+                        });
+                    }else{
+                        if(house.STATE=="2"){
+                            $("#funcBtn").html("预租");
+                            $("#funcBtn").click(function(){
+                                //改变房租状态
+                            });
+                        }else{
+                            $("#funcBtn").hide();
+                        }
+                    }
+                }else{
+                    alert("暂无住房信息");
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
