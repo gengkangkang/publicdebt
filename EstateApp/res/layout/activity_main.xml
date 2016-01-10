@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightblue_bg"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <FrameLayout
+        android:id="@+id/layout_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_height"
+        android:layout_alignParentBottom="true" >
+<!-- 	<ImageView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:src="@drawable/tab_bg"
+	    android:scaleType="fitXY"
+	    
+	    /> -->
+        <RadioGroup
+            android:id="@+id/rg_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height"
+            android:background="#EBEBEB"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/rb_tab_main"
+                style="@style/bottom_tab"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/tab_main_selector1"
+                android:text="@string/tab_main_text" />
+
+            <RadioButton
+                android:id="@+id/rb_tab_touzi"
+                style="@style/bottom_tab"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/tab_touzi_selector1"
+                android:text="@string/tab_touzi_text" />
+
+            <ImageView
+                android:id="@+id/img_touzi_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/icon_point"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_tab_my"
+                style="@style/bottom_tab"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/tab_my_selector1"
+                android:text="@string/tab_my_text" />
+
+            <ImageView
+                android:id="@+id/img_my_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/icon_point"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_tab_more"
+                style="@style/bottom_tab"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/tab_more_selector1"
+                android:text="@string/tab_more_text" />
+        </RadioGroup>
+    </FrameLayout>
+    <!--
+         <View 
+        android:id="@+id/cutline"
+        android:layout_above="@id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:visibility="gone"
+        android:background="@color/translateblue"
+        />
+    -->
+
+    <FrameLayout
+        android:id="@+id/main_tab_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layout_tab"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

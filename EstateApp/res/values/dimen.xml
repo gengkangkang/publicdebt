@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- global -->
+    <dimen name="title_height">48dp</dimen>
+    <dimen name="tab_height">50dp</dimen>
+    <dimen name="listview_lineheight">50dp</dimen>
+    <dimen name="btn_width">50dp</dimen>
+    <dimen name="btn_height">25dp</dimen>
+    <dimen name="back_width">70dp</dimen>
+     <dimen name="wheel_text_size">18sp</dimen>
+
+    <!-- main -->
+    <dimen name="main_content_margin">10dp</dimen>
+    <dimen name="main_layout_height">75dp</dimen>
+    <dimen name="main_layout_first_width">110dp</dimen>
+    <dimen name="main_layout_second_width">45dp</dimen>
+    <dimen name="main_layout_third_width">120dp</dimen>
+    <dimen name="main_content_text_height">33dp</dimen>
+    <!-- text -->
+    <dimen name="tab_title_size">10dp</dimen>
+    <dimen name="fivesize">12dp</dimen>
+    <dimen name="sixSize">14dp</dimen>
+    <dimen name="sevenSize">15dp</dimen>
+    <dimen name="eightSize">16dp</dimen>
+    <dimen name="nineSize">18dp</dimen>
+    <dimen name="tenSize">20dp</dimen>
+    <dimen name="superSize">24sp</dimen>
+
+    <!-- 充值提现 -->
+    <dimen name="avalible_money_height">52dp</dimen>
+</resources>

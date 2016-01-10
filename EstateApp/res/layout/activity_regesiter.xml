@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightblue_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/back_width"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:clickable="true"
+            android:onClick="back"
+            android:scaleType="centerInside"
+            android:src="@drawable/back" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/icon_regesiter" />
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/padding_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/et_rect"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/et_regesiter_username"
+            style="@style/regist_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:digits="@string/digits2"
+            android:drawableLeft="@drawable/icon_name"
+            android:hint="@string/regesiter_user_hintname"
+            android:imeOptions="actionNext"
+            android:maxLength="18"
+            android:nextFocusForward="@+id/et_regesiter_pwd"
+            android:paddingLeft="4dp"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line" />
+
+        <EditText
+            android:id="@+id/et_regesiter_pwd"
+            style="@style/regist_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertzuiopasdfghjklyxcvbnm,QWERTZUIOPASDFGHJKLYXCVBNM"
+            android:drawableLeft="@drawable/icon_password"
+            android:hint="@string/regesiter_user_hintpwd"
+            android:imeOptions="actionNext"
+            android:maxLength="18"
+            android:nextFocusForward="@+id/et_regesiter_commitpwd"
+            android:password="true"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line" />
+
+        <EditText
+            android:id="@+id/et_regesiter_commitpwd"
+            style="@style/regist_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertzuiopasdfghjklyxcvbnm,QWERTZUIOPASDFGHJKLYXCVBNM"
+            android:drawableLeft="@drawable/icon_commitpwd"
+            android:hint="@string/regesiter_user_hintcommitpwd"
+            android:imeOptions="actionNext"
+            android:maxLength="18"
+            android:nextFocusForward="@+id/et_regesiter_mobile"
+            android:password="true"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line" />
+
+        <EditText
+            android:id="@+id/et_regesiter_mobile"
+            style="@style/regist_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:drawableLeft="@drawable/icon_mobile"
+            android:hint="@string/regesiter_user_mobile"
+            android:maxLength="11"
+            android:numeric="integer"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line" />
+
+        <EditText
+            android:id="@+id/et_regesiter_wealth"
+            style="@style/regist_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:drawableLeft="@drawable/icon_wealth"
+            android:hint="@string/regesiter_user_wealth"
+            android:maxLength="11"
+            android:numeric="integer"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/lightblue_bg"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_imagecode"
+            style="@style/regist_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:background="@drawable/et_rect"
+            android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:drawableLeft="@drawable/icon_code"
+            android:drawablePadding="10dp"
+            android:gravity="left|center_vertical"
+            android:hint="@string/hint_imagecode"
+            android:imeOptions="actionNext"
+            android:maxLength="18"
+            android:paddingLeft="14dp"
+            android:singleLine="true" />
+
+        <com.android.core.view.TextImageButton
+            android:id="@+id/img_code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="11"
+            android:background="@drawable/btn_blue"
+            android_custom:ibText="获取验证码"
+            android_custom:ibTextColor="@color/white"
+            android_custom:ibTextSize="15sp" />
+    </LinearLayout>
+
+    <include layout="@layout/merge_code" />
+
+    <LinearLayout
+        style="@style/margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/lightblue_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <CheckBox
+            android:id="@+id/cb_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/checkbox_selector"
+            android:button="@null"
+            android:checked="true" />
+
+        <TextView
+            android:id="@+id/tv_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/regesiter_agree"
+            android:textColor="#87CEEB"
+            android:textSize="@dimen/sixSize" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_goregesiter"
+        style="@style/margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_blue"
+        android:text="@string/makesure"
+        android:textColor="@color/white"
+        android:textSize="@dimen/nineSize" />
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 灰背景 -->
+    <color name="gray_bg">#f7f7f7</color>
+    <color name="blue_text">#196871</color>
+    <!-- 淡蓝色 -->
+    <color name="lightblue_bg">#dee3ed</color>
+    <!-- 白色 -->
+    <color name="white">#ffffff</color>
+    <!-- 深白色 -->
+    <color name="darkwhite">#ebebeb</color>
+    <!-- 灰色线 -->
+    <color name="gray_line">#d9d9d9</color>
+    <!-- 红色 -->
+    <color name="red">#df3932</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+    <!-- 半透明 -->
+    <color name="translucent_background">#20000000</color>
+    <!-- 灰黑色 -->
+    <color name="lightblack">#aeaeae</color>
+    <!-- 蓝色点击 -->
+    <color name="blue_click">#196871</color>
+    <!-- 蓝色 -->
+    <color name="blue">#005386</color>
+    <!-- 土豪金 -->
+    <color name="drab">#a89d35</color>
+    <!-- 深灰色 -->
+    <color name="darkgray">#afafaf</color>
+    <!-- 透明蓝 -->
+    <color name="translateblue">#1E005386</color>
+    <!-- 浅黑色 -->
+    <color name="transblack">#ff404040</color>
+
+    <color name="orangeyellow">#E0D8BD</color>
+    
+    <color name="new_maintextcolor">#FCB56D</color>
+    <!-- Chinapay plugin begin -->
+	<color name="cp_light_white">#ffffff</color>
+	<color name="cp_red">#FF0000</color>
+	<!-- Chinapay plugin end -->
+
+</resources>
