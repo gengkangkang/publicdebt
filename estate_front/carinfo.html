@@ -145,26 +145,28 @@
     };
 
     $(document).ready(function(){
-        $.ajax({
-            url:"/api/blockchain/queryCarInfoByID.do",
-            type:"get",
-            data:{
-                CARNO:encodeURI(param.carId)
-            },
-            dataType:"json",
-            success:function(data){
-                console.log("data=="+JSON.stringify(data));
-                if(data.data[0]){
-                    var car = data.data[0];
-                    $("#CARNO").val(car.carno);
-                    $("#CARBRAND").val(car.carbrand);
-                    $("#CARPRICE").val(car.carprice);
-                    $("#BUYDATE").val(car.buydate);
-                }else{
-                    alert("暂无车辆信息");
+        if(param.carId){
+            $.ajax({
+                url:"/api/blockchain/queryCarInfoByID.do",
+                type:"get",
+                data:{
+                    CARNO:encodeURI(param.carId)
+                },
+                dataType:"json",
+                success:function(data){
+                    console.log("data=="+JSON.stringify(data));
+                    if(data.data[0]){
+                        var car = data.data[0];
+                        $("#CARNO").val(car.carno);
+                        $("#CARBRAND").val(car.carbrand);
+                        $("#CARPRICE").val(car.carprice);
+                        $("#BUYDATE").val(car.buydate);
+                    }else{
+                        alert("暂无车辆信息");
+                    }
                 }
-            }
-        });
+            });
+        }
     });
 
     function add2transfer(){
